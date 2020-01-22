@@ -17,6 +17,7 @@
 package org.superbiz.moviefun.albums;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,6 +30,7 @@ public class AlbumsBean {
     @PersistenceContext(unitName = "albums")
     private EntityManager entityManager;
 
+    @Transactional(transactionManager = "albumsTransactionManager")
     public void addAlbum(Album album) {
         entityManager.persist(album);
     }
